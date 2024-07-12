@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="ali-tools",
-    version="0.1.0",
+    name="jason-lee-tools",
+    version="0.3.0",
     author="Jason Lee",
     author_email="master@lifang.fun",
-    description="sdk for ali's environment",
-    long_description=open('README.md.md').read(),
+    description="sdk for ali(Jason Lee)'s environment",
+    long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     url="https://github.com/neulf/ali-tools",
     packages=find_packages(),
@@ -15,7 +15,7 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.8',
+    python_requires='>=3.6',
     install_requires=[
         'requests'
     ],
