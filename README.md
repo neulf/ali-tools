@@ -7,18 +7,6 @@ A tools for private cloud by Jason Lee.
 ```bash
 pip install jason-lee-tools
 
-
-## 获取天气预报
-api_key = ''  # 从和风天气获取的API密钥
-location = '101010100'  # 北京的地点ID
-weather = get_weather(api_key, location)
-if 'error' not in weather:
-    print(f"Location: {weather['location']}")
-    print(f"Temperature: {weather['temperature']}°C")
-    print(f"Weather: {weather['weather']}")
-else:
-    print(weather['error'])
-
 ## 发送短信提醒
 api_key = '如有需要，找阿力'
 api_secret = '如有需要，找阿力'
@@ -49,3 +37,27 @@ try:
     print('成功:', response)
 except requests.exceptions.RequestException as e:
     print('请求失败:', e)
+
+## 获取天气预报                                              
+api_key = ''  # 从和风天气获取的API密钥                          
+location = '101010100'  # 北京的地点ID                      
+weather = get_weather(api_key, location)               
+if 'error' not in weather:                             
+    print(f"Location: {weather['location']}")          
+    print(f"Temperature: {weather['temperature']}°C")  
+    print(f"Weather: {weather['weather']}")            
+else:                                                  
+    print(weather['error'])       
+    
+## 了解明天是否会下雨
+api_key = ''  # 从和风天气获取的API密钥
+location = '101010100'  # 北京的地点ID
+
+tomorrow_weather = get_tomorrow_weather(api_key, location)
+if 'error' not in tomorrow_weather:
+    if will_it_rain_tomorrow(tomorrow_weather):
+        print("明天会下雨")
+    else:
+        print("明天不会下雨")
+else:
+    print(tomorrow_weather['error'])                     
