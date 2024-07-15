@@ -17,7 +17,7 @@ phone = '18600806692'
 msg = '你好，世界。'
 
 try:
-    response = sms.send(phone, msg)
+    response = sms.send(phone, msg, '2024-07-15 13:46:00') #如果是立刻发哦送，最后一个参数可以为None
     print('成功:', response)
 except requests.exceptions.RequestException as e:
     print('请求失败:', e)
@@ -33,7 +33,7 @@ subject = "你好"
 body = '你好，世界。'
 
 try:
-    response = email.send(to, subject, body)
+    response = email.send(to, subject, body, '2024-07-15 13:46:00') #如果是立刻发哦送，最后一个参数可以为None
     print('成功:', response)
 except requests.exceptions.RequestException as e:
     print('请求失败:', e)

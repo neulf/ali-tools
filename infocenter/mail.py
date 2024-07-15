@@ -29,13 +29,18 @@ class Mail:
         signature = hmac.new(secret_bytes, message_bytes, hashlib.sha256).digest()
         return base64.b64encode(signature).decode(), timestamp
 
-    def send(self, to, subject, body):
+    def send(self, to, subject, body, run_date):
 
         data = {
             'recipient': to,
             'subject': subject,
-            'body': body
+            'body': body,
+            'run_date': run_date,
+            'type': 'mail'
         }
+
+        if data.get('run_date') is None:
+            data.pop('run_date', None)
 
         # 生成签名字符串和时间戳
         signature, timestamp = self.generate_signature(data)
@@ -65,17 +70,19 @@ class Mail:
 
 # 使用示例
 if __name__ == "__main__":
-    api_key = 'Please contact Jason Lee'
-    api_secret = 'Please contact Jason Lee'
+    api_key = ''
+    api_secret = ''
 
     email = Mail(api_key, api_secret)
 
     to = '5988628@qq.com'
     subject = "你好"
     body = '你好，世界。'
+    run_date = '2024-07-15 14:55:50'
 
     try:
-        response = email.send(to, subject, body)
+        response = email.send(to, subject, body, run_date)
+        # response = email.send(to, subject, body, None)
         print('成功:', response)
     except requests.exceptions.RequestException as e:
         print('请求失败:', e)
